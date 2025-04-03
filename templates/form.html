@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ChurnGuard - Customer Churn Predictor</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 800px;
+      margin-top: 40px;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #00BFFF;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .btn-custom {
+      background-color: #00BFFF;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🛡️ ChurnGuard - Churn Predictor</h2>
+
+    {% if prediction %}
+      <div class="alert alert-info text-center">
+        <h5>{{ prediction }}</h5>
+        {% if probability %}
+          <p><strong>Probability:</strong> {{ probability }}%</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <form action="/predict" method="post">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label>Credit Score</label>
+          <input type="number" class="form-control" name="CreditScore" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>Age</label>
+          <input type="number" class="form-control" name="Age" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>Tenure</label>
+          <select class="form-control" name="Tenure">
+            {% for i in range(0, 11) %}
+              <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label>Balance</label>
+          <input type="number" step="0.01" class="form-control" name="Balance" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>Number of Products</label>
+          <select class="form-control" name="NumOfProducts">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>Estimated Salary</label>
+          <input type="number" step="0.01" class="form-control" name="EstimatedSalary" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label>Has Credit Card?</label>
+          <select class="form-control" name="HasCrCard">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>Active Member?</label>
+          <select class="form-control" name="IsActiveMember">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>Gender</label>
+          <select class="form-control" name="Gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label>Geography</label>
+        <select class="form-control" name="Geography">
+          <option value="France">France</option>
+          <option value="Germany">Germany</option>
+          <option value="Spain">Spain</option>
+        </select>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-custom px-5">🚀 Predict</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

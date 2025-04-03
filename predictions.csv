@@ -1,0 +1,6 @@
+CreditScore,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Geography_Germany,Geography_Spain,Gender_Male,Prediction,Churn_Probability,Timestamp
+650,35,3,50000.0,2,1,1,60000.0,0,0,1,No Churn,5.0,2025-04-03 17:50:17
+620,49,3,50000.0,2,1,1,60000.0,0,0,1,No Churn,26.0,2025-03-25 04:06:40
+400,54,0,0.0,2,0,0,10000.0,1,0,1,Churn,51.0,2025-03-29 03:01:34
+650,35,3,50000.0,2,1,1,60000.0,0,0,1,No Churn,5.0,2025-04-03 18:32:05
+700,45,0,500.0,2,1,1,15000.0,0,0,1,No Churn,12.0,2025-04-03 18:38:26
